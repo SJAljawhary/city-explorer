@@ -1,38 +1,39 @@
-.App {
+
+.header{
   text-align: center;
+  color: blue;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.cityInfo{
+  margin-left: 560px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.button{
+  background-color: #f44336; 
+  border: none;
   color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left:60px;
+  margin-top: 30px;
+  cursor: pointer;
 }
-
-.App-link {
-  color: #61dafb;
+.cityName{
+  border-width: 15px;
+  padding: 20px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.information{
+  margin-left: 500px;
+}
+.information p{
+  border: solid 5px black;
+  width: 300px;
+  text-align: justify;
+  padding:20px;
+}
+.map{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
