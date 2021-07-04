@@ -27,11 +27,11 @@ Name of feature: __Asynchronous code, and APIs__
 
 Estimate of time needed to complete: _4 hours_
 
-Start time: __3:30___
+Start time: __3:30pm___
 
-Finish time: _____
+Finish time: __7:00pm___
 
-Actual time needed to complete: _____
+Actual time needed to complete: __4,5 hours___
 Add this information to your README.
 
 
