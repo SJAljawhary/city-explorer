@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 class App extends React.Component {
@@ -11,10 +13,14 @@ class App extends React.Component {
       cityName: '',
       cityData: {},
       cityMap: false,
-      errorMessage: false
+      errorMessage: false,
+      weatherInfo: [],
+      errorWeather: false
 
     }
   }
+
+
 
   setLocation = async (event) => {
 
@@ -38,7 +44,8 @@ class App extends React.Component {
         cityData: recievedData.data[0],
         cityMap: true
       })
-  
+
+      this.getWeather();
 
     } catch {
       this.setState({
@@ -46,49 +53,75 @@ class App extends React.Component {
       })
 
     }
+
   }
 
-    render() {
-      return (
-        <div>
 
-          <h1 className='header'>City Explorer</h1>
-          <form onSubmit={this.setLocation} className='cityInfo'>
+  getWeather = async () => {
+    let url = `${process.env.REACT_APP_SERVER}/getWeatherInfo?cityName=${this.state.cityName.charAt(0).toUpperCase() + this.state.cityName.slice(1)}`
 
-            <input className='cityName' type='text' placeholder='city name' name='city' /><br></br>
-            <input className='button' type='submit' value='Explore!' />
+    try {
+      let weatherData = await axios.get(url);
+      this.setState({
+        weatherInfo: weatherData.data,
+        errorWeather: true
 
-          </form>
+      })
+    } catch {
+      this.setState({
+        errorMessage: true
+      })
+    }
+  }
 
-          <div className='information'>
+  render() {
+    return (
+      <div>
 
-            <p>City Name : {this.state.cityData.display_name}</p>
-            <p>Lattitude : {this.state.cityData.lat}</p>
-            <p>Longitude : {this.state.cityData.lon}</p>
+        <h1 className='header'>City Explorer</h1>
+        <form onSubmit={this.setLocation} className='cityInfo'>
 
-          </div>
+          <input className='cityName' type='text' placeholder='city name' name='city' /><br></br>
+          <input className='button' type='submit' value='Explore!' />
 
-          {
-            this.state.cityMap &&
+        </form>
 
-            <img className='map' alt='' src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10`} />
+        <div className='information'>
 
-          }
-
-          {this.state.errorMessage &&
-            <p>something went wrong in getting data from locationiq ! </p>
-          }
-
+          <p>City Name : {this.state.cityData.display_name}</p>
+          <p>Lattitude : {this.state.cityData.lat}</p>
+          <p>Longitude : {this.state.cityData.lon}</p>
 
         </div>
 
-      )
-    }
+        {
+          this.state.cityMap &&
 
+          <img className='map' alt='' src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10`} />
 
+        }
 
-  }
+        {this.state.errorMessage &&
+          <p>something went wrong in getting data from locationiq ! </p>
+        }
 
+        {this.state.weatherInfo.map((value, index) => (
+        
+          <ul key={index}> 
+          <li>
+          {value.date} 
+          </li>
+          <li>
+          {value.description}
+          </li>
+        </ul>
 
+          ))}
 
-  export default App;
+               
+
+      </div>
+
+    )
+        }}
+    export default App;
