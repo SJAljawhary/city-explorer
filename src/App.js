@@ -147,105 +147,45 @@ class App extends React.Component {
 
           <ul className="list" key={index}>
             <li>
-             tilte : {value.title}
+              tilte : {value.title}
             </li>
             <li>
-             overview : {value.overview}
+              overview : {value.overview}
             </li>
             <li>
-            average : {value.average_votes}
+              average : {value.average_votes}
             </li>
             <li>
-             total votes : {value.total_votes}
+              total votes : {value.total_votes}
             </li>
             <li>
-             image : <img src = {value.image_url}/>
+              image : <img src={value.image_url} />
             </li>
             <li>
-             popularity : {value.popularity}
+              popularity : {value.popularity}
             </li>
             <li>
-             released on : {value.released_on}
+              released on : {value.released_on}
             </li>
           </ul>
 
         ))}
 
-
-  }
-
-
-  getWeather = async () => {
-    let url = `${process.env.REACT_APP_SERVER}/getWeatherInfo?cityName=${this.state.cityName.charAt(0).toUpperCase() + this.state.cityName.slice(1)}`
-
-    try {
-      let weatherData = await axios.get(url);
-      this.setState({
-        weatherInfo: weatherData.data,
-        errorWeather: true
-
-      })
-    } catch {
-      this.setState({
-        errorMessage: true
-      })
-    }
-  }
-
-  render() {
-    return (
-      <div>
-
-        <h1 className='header'>City Explorer</h1>
-        <form onSubmit={this.setLocation} className='cityInfo'>
-
-          <input className='cityName' type='text' placeholder='city name' name='city' /><br></br>
-          <input className='button' type='submit' value='Explore!' />
-
-        </form>
-
-        <div className='information'>
-
-          <p>City Name : {this.state.cityData.display_name}</p>
-          <p>Lattitude : {this.state.cityData.lat}</p>
-          <p>Longitude : {this.state.cityData.lon}</p>
-
-        </div>
-
-        {
-          this.state.cityMap &&
-
-          <img className='map' alt='' src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10`} />
-
-        }
-
-        {this.state.errorMessage &&
-          <p>something went wrong in getting data from locationiq ! </p>
-        }
-
-        {this.state.weatherInfo.map((value, index) => (
-        
-          <ul key={index}> 
-          <li>
-          {value.date} 
-          </li>
-          <li>
-          {value.description}
-          </li>
-        </ul>
-
-          ))}
-
-
-
       </div>
+
+
+
+
+
+
+
 
     )
 
   }
 }
-export default App;
 
-        }}
-    export default App;
+
+
+export default App;
 
