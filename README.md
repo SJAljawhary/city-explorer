@@ -1,41 +1,46 @@
 
 # Project Name
 
-**Author**: Your Name Goes Here
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Author**: Sondos Jehad Al-Jawhary
+**Version**: 1.0.1 
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+A React App that serves city information using various API's , based on search queries
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+React, Bootstrap,dotenv ,netlify ,API LocationIQ , Thunder Client, Heroku ,axios ,
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+#### Name of feature: Lab 06 Asynchronous code, and APIs 
+
+Estimate of time needed to complete:  5 hours
+Start time: 3:30 pm
+Finish time: 9:30 pm
+Actual time needed to complete: 6,5 hours
+
+
+#### Name of feature: Lab 07 Custom Servers with Node and Express
+
+Estimate of time needed to complete: 7 hrs
+Start time: 3:10 pm
+Finish time: 11 :30 pm
+Actual time needed to complete: 8 hours 
+
+
+#### Name of feature: Lab 08 APIs
+
+Estimate of time needed to complete: 6 hrs
+Start time: 4:00 pm
+Finish time: 10:30 pm
+Actual time needed to complete: 6,5 hours
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-Time Estimates
-For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
-Name of feature: __Asynchronous code, and APIs__
-
-Estimate of time needed to complete: _4 hours_
-
-Start time: __3:30pm___
-
-Finish time: __7:00pm___
-
-Actual time needed to complete: __4,5 hours___
-Add this information to your README.
-
-
-
+---------------------------------------------------------------------------------------
 
 # Getting Started with Create React App
 
