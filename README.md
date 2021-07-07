@@ -38,6 +38,13 @@ Start time: 4:00 pm
 Finish time: 10:30 pm
 Actual time needed to complete: 6,5 hours
 
+#### Name of feature: Lab 09 Refactoring into Modules
+
+Estimate of time needed to complete: 4 hrs
+Start time: 2:00 pm
+Finish time: 5:30 pm
+Actual time needed to complete: 3,5 hours
+
 ## Credit and Collaborations
 
 ---------------------------------------------------------------------------------------
