@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Map from './components/Map';
+import Weather from './components/Weather'
+import Movies from './components/Movies';
 
 
 class App extends React.Component {
@@ -10,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cityName: '',
+      CityName: '',
       cityData: {},
       cityMap: false,
       errorMessage: false,
@@ -18,24 +20,23 @@ class App extends React.Component {
       errorWeather: false,
       movieInfo: [],
       errorMovie: false,
-      errorWeather: false
+      errorWeather: false,
+      imgSrc: '',
 
 
     }
   }
-
-
 
   setLocation = async (event) => {
 
     event.preventDefault();
 
     await this.setState({
-      cityName: event.target.city.value
+      CityName: event.target.city.value
 
     })
 
-    let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&city=${this.state.cityName}&format=json`;
+    let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&city=${this.state.CityName}&format=json`;
 
 
     try {
@@ -46,8 +47,11 @@ class App extends React.Component {
 
       this.setState({
         cityData: recievedData.data[0],
+        imgSrc : `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${recievedData.data[0].lat},${recievedData.data[0].lon}&zoom=12`,
         cityMap: true
+        
       })
+      
 
       this.getWeather();
 
@@ -63,10 +67,10 @@ class App extends React.Component {
 
 
   }
-
+  
 
   getWeather = async () => {
-    let url = `${process.env.REACT_APP_SERVER}/getWeatherInfo?cityName=${this.state.cityName.charAt(0).toUpperCase() + this.state.cityName.slice(1)}`
+    let url = `${process.env.REACT_APP_SERVER}/weather?cityName=${this.state.CityName.charAt(0).toUpperCase() + this.state.CityName.slice(1)}`
 
     try {
       let weatherData = await axios.get(url);
@@ -83,7 +87,7 @@ class App extends React.Component {
   }
 
   getMovie = async () => {
-    let url = `${process.env.REACT_APP_SERVER}/getMovieInfo?cityName=${this.state.cityName.charAt(0).toUpperCase() + this.state.cityName.slice(1)}`
+    let url = `${process.env.REACT_APP_SERVER}/movies?cityName=${this.state.CityName.charAt(0).toUpperCase() + this.state.CityName.slice(1)}`
 
     try {
       let movieData = await axios.get(url);
@@ -112,80 +116,41 @@ class App extends React.Component {
         </form>
 
         <div className='information'>
+          {
+            this.state.cityMap &&
+            <Map
+              displayName={this.state.cityData.display_name}
+              longitude={this.state.cityData.lon}
+              latitude={this.state.cityData.lat}
+              imgURL={this.state.imgSrc}
+            />
 
-          <p>City Name : {this.state.cityData.display_name}</p>
-          <p>Lattitude : {this.state.cityData.lat}</p>
-          <p>Longitude : {this.state.cityData.lon}</p>
-
+          }
         </div>
-
-        {
-          this.state.cityMap &&
-
-          <img className='map' alt='' src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=10`} />
-
-        }
 
         {this.state.errorMessage &&
           <p>something went wrong in getting data from locationiq ! </p>
         }
 
-        {this.state.weatherInfo.map((value, index) => (
+        <div className='information1'>
+        {this.state.errorWeather &&
+          <Weather
+            weatherInformation = {this.state.weatherInfo}
+          />
+        }
+        </div>
 
-          <ul className="list" key={index}>
-            <li>
-              {value.date}
-            </li>
-            <li>
-              {value.description}
-            </li>
-          </ul>
-
-        ))}
-
-        {this.state.movieInfo.map((value, index) => (
-
-          <ul className="list" key={index}>
-            <li>
-              tilte : {value.title}
-            </li>
-            <li>
-              overview : {value.overview}
-            </li>
-            <li>
-              average : {value.average_votes}
-            </li>
-            <li>
-              total votes : {value.total_votes}
-            </li>
-            <li>
-              image : <img src={value.image_url} />
-            </li>
-            <li>
-              popularity : {value.popularity}
-            </li>
-            <li>
-              released on : {value.released_on}
-            </li>
-          </ul>
-
-        ))}
+        <div className='information2'>
+          {this.state.errorMovie &&
+          <Movies
+          movieInformation = {this.state.movieInfo}
+          />
+        }
+        </div>
 
       </div>
-
-
-
-
-
-
-
-
     )
-
   }
 }
-
-
-
 export default App;
 
