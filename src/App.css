@@ -1,15 +1,24 @@
-
+body{
+  background-image: url(https://img.freepik.com/free-vector/global-technology-background-with-circuit-diagram_1017-26580.jpg?size=626&ext=jpg);
+  background-repeat:repeat-y;
+  background-size: cover;
+  
+}
 .header{
   text-align: center;
-  color: blue;
+  color: rgb(0, 225, 255);
+  margin-top: 50px ;
+  margin-bottom: 50px;
 }
 .cityInfo{
   margin-left: 560px;
 }
 .button{
-  background-color: #f44336; 
+  background-color: #f0f2f7; 
   border: none;
-  color: white;
+  color: rgb(31, 6, 88);
+  font-size: 50px;
+  font-weight: 800;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -18,22 +27,24 @@
   margin-left:60px;
   margin-top: 30px;
   cursor: pointer;
+  border-radius: 20px;
 }
 .cityName{
-  border-width: 15px;
+  border:#f2f4f8 solid;
+  border-width: 10px;
   padding: 20px;
+  border-radius: 20px;
 }
 .information{
-  margin-left: 500px;
+  margin-left: 350px;
+  margin-top: 50px;
 }
-.information p{
-  border: solid 5px black;
-  width: 300px;
-  text-align: justify;
-  padding:20px;
+.information1{
+  margin-left: 350px;
+  margin-top: 50px;
 }
-.map{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.information2{
+  margin-left: 350px;
+  margin-top: 50px;
 }
+
