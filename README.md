@@ -45,6 +45,12 @@ Start time: 2:00 pm
 Finish time: 5:30 pm
 Actual time needed to complete: 3,5 hours
 
+#### Name of feature: ___Lab10 In memory storage___
+Estimate of time needed to complete: __1 hours___
+Start time: __1:20pm___
+Finish time: __1:50pm____
+Actual time needed to complete: __30 min____
+
 ## Credit and Collaborations
 
 ---------------------------------------------------------------------------------------
